@@ -1,28 +1,45 @@
-class CSVFile():
-    def  __init__(self, file_name):
+class CSVfile():
+
+    def _init_(self,file_name):
+        self.name=file_name
+        
+    def get_data(self):
+        try:
+            openedfile=open(self,'r')
+        except Exception as e:
+            print ("il file in questione non esiste")
+            print ("ho avuto questo errore:{}".format(e))  
+        data=[]
+        for line in openedfile:
+            elements=line.split(',')
+            if (elements[0]!='Date'):
+                data.append(elements)
+        return data
+    def _str_(self):
+        return 'CSVfile {}'.format(self.name)
+
+class CSVfilenumerico:
+
+    def _init_(self,file_name):
         self.name=file_name
 
-    def get_data(self):
-        file_list = []   
-        openedfile = open(self.name, 'r')
+    def change_type(self):
+        openedfile=open(self.name, 'r')
+        sales=[]
         for line in openedfile:
-            elements = line.split(',')
-            if elements[0] != "Date":
-                lineElements = line.split (',')
-                lineElements [1] = lineElements [1].strip()
-                file_list.append(lineElements)
-        return file_list 
+            elements=line.split(',')
+            if(elements[1]!='Sales\n'):
+                try:
+                    my_num=float(elements[1])
+                except Exception as e:
+                    print("non è convertibile in float {}".format(elements[1]))
+                    print("ho trovato questo errore: {}".format(e))
+                    my_num='\n'
+                sales.append(my_num)
+        return sales
 
-shampooFile = CSVFile ('shampoo_sales.csv')
-shampooList = shampooFile.get_data()
-
-try:
-    ShampooFile = float(ShampooFile)
-
-except Exception as e:
-    print('non posso')
-    print('ho avuto un errore genetico: "{}"'.fromat(e))
-
-
-for line in shampooList:
-    print(line)
+my_file=CSVfile('shampoo_sales.csv')
+my_file2=CSVfilenumerico('shampoo_sales_lezione5.csv')
+sales=my_file2.change_type()
+for item in sales:
+    print (item)
