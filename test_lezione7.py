@@ -1,6 +1,5 @@
 import unittest
 from lezione7 import CSVFile
-
 #testing
 class TestCSVFile(unittest.TestCase):
 
