@@ -4,14 +4,21 @@ class Model():
         raise NotImplementedError('Metodo non implementato')
     def predict(self, data):
         # Predict non implementanto nella classe base
-        raise NotImplementedError('Metodo non implementato')     
+        raise NotImplementedError('Metodo non implementato')
+
 class IncrementModel(Model):
     def predict(self, data):
-        prediction=0
+        incremento=0
+        item1=0
         for item in data:
-            # Logica per la predizione
-            prediction=item+prediction 
-        prediction = prediction/len(data)
-        return prediction   
+            if(item != data[0]):
+                incremento=(item-item1)+incremento
+            item1=item
+        prediction = ((incremento/(len(data)-1)) + item)
+        return prediction
 
-print('prediction')
+Modello=IncrementModel()
+data=[50,52,60]
+previsione=Modello.predict(data)
+print("La previsione è: {}".format(previsione))
+
