@@ -21,4 +21,3 @@ Modello=IncrementModel()
 data=[50,52,60]
 previsione=Modello.predict(data)
 print("La previsione è: {}".format(previsione))
-
