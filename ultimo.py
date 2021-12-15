@@ -118,7 +118,7 @@ fit_increment_model = FitIncrementModel()
 # Fitto sui dati fino al mese di cutoff
 fit_increment_model.fit(shampoo_sales[0:cutoff_month])
 
-# Metto entrambi i modelli in una lista
+# Metto entrambi i modelli in una lista 
 models = [increment_model, fit_increment_model]
 
 # Swicth per il plot (se messo a True bisogna chiudere la finestra del plot 
