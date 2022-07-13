@@ -84,7 +84,7 @@ def compute_daily_max_difference(time_series):
         if (current_day != previous_day):
             #itero una seconda volta sulla time_series
             for liste in time_series:
-                #controllo se l'elemento che sto considerando nel secondo for ha la stessa data del item
+                #controllo se l'elemento che stò considerando nel secondo for ha la stessa data del item
                 if (liste[0] - (liste[0]%86400) == current_day):
                     #se ha la stessa data salvo la temperature in new
                     new.append(liste[1])
